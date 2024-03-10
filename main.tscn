@@ -1,13 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwnujgd7si0kw"]
+[gd_scene load_steps=5 format=3 uid="uid://cwnujgd7si0kw"]
 
 [ext_resource type="PackedScene" uid="uid://ccnfccpesogct" path="res://player.tscn" id="1_jkjib"]
 [ext_resource type="PackedScene" uid="uid://ntcgk6v8ljku" path="res://platform.tscn" id="2_4txgy"]
+[ext_resource type="Environment" uid="uid://c01mmxox0tv4j" path="res://resources/world_environment.tres" id="3_s7mla"]
+[ext_resource type="CameraAttributesPractical" uid="uid://baaqnni6ym82k" path="res://resources/camera_attributes_practical.tres" id="4_45lvy"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_jkjib")]
 
 [node name="Platform" parent="." instance=ExtResource("2_4txgy")]
+transform = Transform3D(5.91245, 0, 0, 0, 5.91245, 0, 0, 0, 5.91245, 0, -5, -34.8375)
 
 [node name="SunLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.761855, 0.608475, -0.222114, 0.080007, 0.25188, 0.964446, 0.642788, -0.752538, 0.143214, 3.92705, 6.88548, -4.24239)
+transform = Transform3D(0.761855, 0.608476, -0.222114, 0.080007, 0.25188, 0.964446, 0.642788, -0.752538, 0.143214, 2.11309, 6.88548, -2.67802)
+
+[node name="Platform2" parent="." instance=ExtResource("2_4txgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_s7mla")
+camera_attributes = ExtResource("4_45lvy")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66803, 7.8661, 3.52993)
+quality = 2
+bounces = 4
+camera_attributes = ExtResource("4_45lvy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(28.4378, 0, 0, 0, 28.4378, 0, 0, 0, 28.4378, 17.5254, -1.52941, -5.08483)
+operation = 2
+use_collision = true
+size = Vector3(1, 0.0253906, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(0.12016, 0, 0, 0, 0.12016, 0, 0, 0, 0.12016, -0.052669, 0.0321171, 0.12594)
+operation = 2
+use_collision = true
